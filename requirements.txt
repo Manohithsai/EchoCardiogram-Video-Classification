@@ -1,0 +1,27 @@
+# Install torch/torchvision separately, matching your CUDA version:
+#   https://pytorch.org/get-started/locally/
+# Then: pip install -r requirements.txt
+
+numpy>=1.24
+pandas>=2.0
+opencv-python-headless>=4.8
+pyyaml>=6.0
+tqdm>=4.65
+pytest>=7.4
+
+# Training / experiment tracking
+wandb>=0.16          # or mlflow, pick one
+
+# Evaluation / uncertainty
+scikit-learn>=1.3
+scipy>=1.11
+
+# XAI
+grad-cam>=1.4         # pytorch-grad-cam; supports 3D via custom target layers
+
+# Serving
+fastapi>=0.110
+uvicorn>=0.29
+onnx>=1.15
+onnxruntime>=1.17
+gradio>=4.20

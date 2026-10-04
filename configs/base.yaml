@@ -1,0 +1,40 @@
+seed: 42
+
+data:
+  raw_video_dir: "data/EchoNet-Dynamic/Videos"
+  file_list_csv: "data/EchoNet-Dynamic/FileList.csv"
+  volume_tracings_csv: "data/EchoNet-Dynamic/VolumeTracings.csv"
+  cache_dir: "data/cache"          # where preprocessed .npy clips go
+  frame_size: 112                  # HxW after resize
+  num_frames: 32                   # frames per clip
+  frame_stride: 2                  # sampling stride within the video
+  ef_thresholds: [40, 50]          # -> classes: reduced(<40), mildly_reduced(40-49), normal(>=50)
+
+model:
+  name: "r3d_18"                   # r3d_18 | frame_cnn | video_swin_t
+  pretrained: true
+  dropout_p: 0.3                   # used for MC Dropout at inference too
+  multitask: true                  # predict EF, EDV, ESV jointly
+  ef_consistency_weight: 0.1       # 0 disables the consistency loss (ablation switch)
+
+train:
+  batch_size: 4                    # small on purpose for 6GB VRAM; raise on Kaggle
+  num_workers: 4
+  epochs: 40
+  warmup_epochs: 4                 # backbone frozen, heads only
+  lr_head: 1.0e-3
+  lr_backbone: 3.0e-5
+  weight_decay: 1.0e-4
+  grad_clip_norm: 1.0
+  amp: true                        # mixed precision, important on 6GB
+  early_stop_patience: 6
+  log_dir: "runs"
+
+uncertainty:
+  method: "mc_dropout"             # mc_dropout | ensemble | heteroscedastic
+  mc_passes: 30
+  conformal_alpha: 0.1             # -> 90% target coverage
+
+output:
+  checkpoint_dir: "checkpoints"
+  results_dir: "results"

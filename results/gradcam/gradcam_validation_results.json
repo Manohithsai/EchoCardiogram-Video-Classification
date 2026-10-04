@@ -1,0 +1,8 @@
+{
+  "n_samples": 300,
+  "tolerance_frames": 15,
+  "model_hit_rate": 0.3566666666666667,
+  "random_baseline_hit_rate": 0.29,
+  "lift_over_random": 0.06666666666666671,
+  "mean_distance_to_keyframe": 29.296666666666667
+}

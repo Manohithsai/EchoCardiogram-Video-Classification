@@ -1,0 +1,24 @@
+# Dataset -- never commit, per Stanford AIMI's Research Use Agreement
+data/
+
+# Checkpoints -- large binary files, don't belong in git history
+checkpoints/
+
+# Results -- plots/JSONs are small and fine to keep for now, but large
+# example-image folders can be excluded if you prefer a lighter repo.
+# Uncomment if you want to exclude:
+# results/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Weights & Biases local run logs
+wandb/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
