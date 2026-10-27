@@ -1,0 +1,30 @@
+Echo-EF checkpoint recheck: inference only, TEST split.
+The TEST split was used during earlier development; this is not an untouched final test.
+Comparisons below are recomputed from files, aligned by clip filename.
+
+[baseline] checkpoint r3d18_best.pt
+  epoch=24; val_mae=5.466039728674089
+  checkpoint sha256: 7ea9c83359e3918019a99057bc7154ce1d66437ac4bc28f55bb25f7307dc194a
+  TEST n=1277; MAE=5.379; RMSE=7.345; true R2=0.639; Pearson squared=0.647
+  truth matches: True; max EF diff 0.000000, mean 0.000000; count over 1e-3: 0 of 1277
+  new predictions sha256: bcaa1267e23c8e95e49260a37e6b9c3ceea852cba927c07b084fa1228fe04b37
+  old predictions (results/test_eval_baseline/test_predictions.npz) sha256: bcaa1267e23c8e95e49260a37e6b9c3ceea852cba927c07b084fa1228fe04b37
+
+[drw] checkpoint r3d18_balanced_best.pt
+  epoch=18; val_mae=5.626346437827401
+  checkpoint sha256: b5bb1d6baf5aba32b4e06646f70b5d1b0ed4e761cda17b51b353c45961aa9627
+  TEST n=1277; MAE=5.662; RMSE=7.742; true R2=0.599; Pearson squared=0.607
+  truth matches: True; max EF diff 19.457500, mean 3.678157; count over 1e-3: 1277 of 1277
+  new predictions sha256: 972f654924c1fffccc53800dd55f7076835c80f76d4b040fc28c0b878c7ea6d8
+  old predictions (results/test_eval_balanced/test_predictions.npz) sha256: bcaa1267e23c8e95e49260a37e6b9c3ceea852cba927c07b084fa1228fe04b37
+
+[lds] checkpoint r3d18_lds_best.pt
+  epoch=36; val_mae=5.830717086791992
+  checkpoint sha256: e41504203f84e8778249aed1a8b75330586253e4b4292a88d8d47e73009d0717
+  TEST n=1277; MAE=5.962; RMSE=7.690; true R2=0.604; Pearson squared=0.628
+  truth matches: True; max EF diff 0.000000, mean 0.000000; count over 1e-3: 0 of 1277
+  new predictions sha256: 05d36d2b5d5eab6be7e5c8e74c453d77053eec296a2521d177da2d217fc84c1a
+  old predictions (results/test_eval_lds/test_predictions.npz) sha256: 05d36d2b5d5eab6be7e5c8e74c453d77053eec296a2521d177da2d217fc84c1a
+
+Old baseline and balanced files byte-identical: True
+Frame-CNN and uncertainty checkpoints were not re-evaluated in this check.

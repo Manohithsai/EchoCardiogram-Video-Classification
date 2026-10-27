@@ -1,0 +1,74 @@
+{
+  "tag": "r3d18_cb_drw",
+  "checkpoint": "checkpoints\\r3d18_balanced_best.pt",
+  "checkpoint_sha256_16": "b5bb1d6baf5aba32",
+  "checkpoint_epoch": 18,
+  "checkpoint_val_mae": 5.626346437827401,
+  "predictions_file": "results\\eval_runs\\r3d18_cb_drw\\predictions.npz",
+  "predictions_sha256_16": "88d653b3ba80080d",
+  "n_test": 1277,
+  "mae": 5.662838935852051,
+  "mae_ci95": [
+    5.395259141921997,
+    5.958081912994385
+  ],
+  "rmse": 7.742116928100586,
+  "rmse_ci95": [
+    7.3233102560043335,
+    8.189010787010194
+  ],
+  "r2_coefficient_of_determination": 0.5989608591990165,
+  "pearson_r": 0.7788613371407647,
+  "pearson_r_squared": 0.6066249824926999,
+  "test_variance_sst_over_n": 149.46265661707127,
+  "edv_mae": 16.80677032470703,
+  "esv_mae": 9.811678886413574,
+  "ef_lt_50": {
+    "auc": 0.8968626202603283,
+    "sensitivity": 0.6210526315789474,
+    "specificity": 0.9566532258064516
+  },
+  "ef_lt_40": {
+    "auc": 0.9205293196060877,
+    "sensitivity": 0.46875,
+    "specificity": 0.9865711727842436
+  },
+  "macro_f1": 0.6211868056153648,
+  "confusion_matrix_rows_true_cols_pred": [
+    [
+      75,
+      47,
+      38
+    ],
+    [
+      12,
+      43,
+      70
+    ],
+    [
+      3,
+      40,
+      949
+    ]
+  ],
+  "class_names": [
+    "Reduced",
+    "Mildly reduced",
+    "Normal"
+  ],
+  "per_class_mae": {
+    "Reduced": 12.270071029663086,
+    "Mildly reduced": 7.002907752990723,
+    "Normal": 4.42829704284668
+  },
+  "per_class_recall": {
+    "Reduced": 0.46875,
+    "Mildly reduced": 0.344,
+    "Normal": 0.9566532258064516
+  },
+  "bland_altman": {
+    "bias": 0.14952979981899261,
+    "loa_low": -15.028132534623145,
+    "loa_high": 15.32719213426113
+  }
+}

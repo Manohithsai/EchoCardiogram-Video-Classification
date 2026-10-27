@@ -1,0 +1,87 @@
+{
+  "metrics": {
+    "n": 1277,
+    "mae": 6.221585936161719,
+    "rmse": 8.65196013367674,
+    "r2_true": 0.4991631112386642,
+    "pearson_r": 0.7229920136858062,
+    "pearson_r_squared": 0.5227174518534571,
+    "mean_error_bias": 1.489196950603297,
+    "edv_mae": 23.215167999267578,
+    "esv_mae": 13.426933288574219
+  },
+  "provenance": {
+    "created_local_time": "2026-10-27T02:38:07",
+    "checkpoint_path": "checkpoints\\frame_cnn_best.pt",
+    "checkpoint_sha256": "f633f195ac1959d9f38ebc3dbd5b715e38b060040191e0109a256877f9c9d2fc",
+    "checkpoint_epoch": 10,
+    "checkpoint_val_mae": 6.068009888903695,
+    "checkpoint_stored_config": {
+      "seed": 42,
+      "data": {
+        "raw_video_dir": "data/EchoNet-Dynamic/Videos",
+        "file_list_csv": "data/EchoNet-Dynamic/FileList.csv",
+        "volume_tracings_csv": "data/EchoNet-Dynamic/VolumeTracings.csv",
+        "cache_dir": "data/cache",
+        "frame_size": 112,
+        "num_frames": 32,
+        "frame_stride": 2,
+        "ef_thresholds": [
+          40,
+          50
+        ]
+      },
+      "model": {
+        "name": "r3d_18",
+        "pretrained": true,
+        "dropout_p": 0.3,
+        "multitask": true,
+        "ef_consistency_weight": 0.1
+      },
+      "train": {
+        "batch_size": 4,
+        "num_workers": 4,
+        "epochs": 40,
+        "warmup_epochs": 4,
+        "lr_head": 0.001,
+        "lr_backbone": 3e-05,
+        "weight_decay": 0.0001,
+        "grad_clip_norm": 1.0,
+        "amp": true,
+        "early_stop_patience": 6,
+        "log_dir": "runs"
+      },
+      "uncertainty": {
+        "method": "mc_dropout",
+        "mc_passes": 30,
+        "conformal_alpha": 0.1
+      },
+      "output": {
+        "checkpoint_dir": "checkpoints",
+        "results_dir": "results"
+      }
+    },
+    "config_path": "configs\\base.yaml",
+    "config_sha256": "a749966bab2a605bfa5f920037ed597fa2c82c5b3a7a8ca81561aa62102e5ff3",
+    "file_list_csv": "data/EchoNet-Dynamic/FileList.csv",
+    "file_list_csv_sha256": "31942534b7bb3debb9f0f3de42af2fb4342f7ea918b32a4095a0b66e91fbace1",
+    "model_class": "FrameCNNMultiTask",
+    "normalization_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "normalization_std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "split": "TEST",
+    "n_clips": 1277,
+    "device": "cuda",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.2.6",
+    "python": "3.10.0",
+    "note": "Inference-only re-evaluation. The TEST split was used during earlier model development, so this verifies saved models; it is not an untouched final test."
+  }
+}

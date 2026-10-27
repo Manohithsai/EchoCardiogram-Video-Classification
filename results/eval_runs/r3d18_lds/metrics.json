@@ -1,0 +1,74 @@
+{
+  "tag": "r3d18_lds",
+  "checkpoint": "checkpoints\\r3d18_lds_best.pt",
+  "checkpoint_sha256_16": "e41504203f84e877",
+  "checkpoint_epoch": 36,
+  "checkpoint_val_mae": 5.830717086791992,
+  "predictions_file": "results\\eval_runs\\r3d18_lds\\predictions.npz",
+  "predictions_sha256_16": "5156b094768e0ec1",
+  "n_test": 1277,
+  "mae": 5.9652276039123535,
+  "mae_ci95": [
+    5.7034009337425235,
+    6.21281908750534
+  ],
+  "rmse": 7.693140983581543,
+  "rmse_ci95": [
+    7.35098168849945,
+    8.049714422225952
+  ],
+  "r2_coefficient_of_determination": 0.6040187031263456,
+  "pearson_r": 0.7924622176955829,
+  "pearson_r_squared": 0.6279963664750015,
+  "test_variance_sst_over_n": 149.46265661707127,
+  "edv_mae": 16.8006534576416,
+  "esv_mae": 9.685808181762695,
+  "ef_lt_50": {
+    "auc": 0.9232367713638936,
+    "sensitivity": 0.7789473684210526,
+    "specificity": 0.9002016129032258
+  },
+  "ef_lt_40": {
+    "auc": 0.9455237242614145,
+    "sensitivity": 0.69375,
+    "specificity": 0.9677708146821844
+  },
+  "macro_f1": 0.6603673139724336,
+  "confusion_matrix_rows_true_cols_pred": [
+    [
+      111,
+      34,
+      15
+    ],
+    [
+      26,
+      51,
+      48
+    ],
+    [
+      10,
+      89,
+      893
+    ]
+  ],
+  "class_names": [
+    "Reduced",
+    "Mildly reduced",
+    "Normal"
+  ],
+  "per_class_mae": {
+    "Reduced": 8.279043197631836,
+    "Mildly reduced": 6.331014633178711,
+    "Normal": 5.545939922332764
+  },
+  "per_class_recall": {
+    "Reduced": 0.69375,
+    "Mildly reduced": 0.408,
+    "Normal": 0.9002016129032258
+  },
+  "bland_altman": {
+    "bias": -0.487840473651886,
+    "loa_low": -15.541945774555206,
+    "loa_high": 14.566264827251434
+  }
+}
