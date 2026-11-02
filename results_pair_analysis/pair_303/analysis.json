@@ -1,0 +1,65 @@
+{
+  "tag": "pair_303",
+  "scope": "VAL, one seed pair, descriptive only",
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 404,
+    "interval": "95% percentile",
+    "paired_indices": true
+  },
+  "counts": {
+    "videos": 1288,
+    "mild": 133,
+    "normal": 999
+  },
+  "metrics": {
+    "mild_recall": {
+      "population": 133,
+      "unit": "recall",
+      "difference_ordinal_minus_baseline": -0.05263157894736842,
+      "ci95": [
+        -0.12781954887218044,
+        0.022556390977443608
+      ],
+      "baseline_recall": 0.2857142857142857,
+      "ordinal_recall": 0.23308270676691728
+    },
+    "normal_recall": {
+      "population": 999,
+      "unit": "recall",
+      "difference_ordinal_minus_baseline": -0.004004004004004004,
+      "ci95": [
+        -0.014014014014014014,
+        0.005005005005005005
+      ],
+      "baseline_recall": 0.954954954954955,
+      "ordinal_recall": 0.950950950950951
+    },
+    "mae": {
+      "population": 1288,
+      "unit": "mae_points",
+      "baseline_mae": 5.3153939521090585,
+      "ordinal_mae": 5.425125630745977,
+      "difference_ordinal_minus_baseline": 0.10973167863691816,
+      "ci95": [
+        -0.0377913234766966,
+        0.25378971995774263
+      ]
+    }
+  },
+  "inputs": {
+    "baseline": {
+      "dir": "results\\eval_split\\val_matched_baseline303_fp32_k1",
+      "checkpoint": "checkpoints\\r3d18_matched_baseline_seed303\\best.pt",
+      "checkpoint_sha256_16": "168e7d732c5dc83d",
+      "predictions_sha256_16": "69a912f31c7ff551"
+    },
+    "ordinal": {
+      "dir": "results\\eval_split\\val_ordinal303_stripped_fp32_k1",
+      "checkpoint": "checkpoints\\r3d18_ordinal_seed303\\best_for_eval.pt",
+      "checkpoint_sha256_16": "5b5532282067a41b",
+      "predictions_sha256_16": "f5df0a08d5d50cdf"
+    }
+  },
+  "note": "Labels (consistently positive / inconclusive / negative) and guardrails (Normal recall >= 92%, MAE within about 0.15) apply to means across all three seed pairs, not to this single pair."
+}

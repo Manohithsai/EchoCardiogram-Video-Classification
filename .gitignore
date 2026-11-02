@@ -1,5 +1,5 @@
 # Dataset -- never commit, per Stanford AIMI's Research Use Agreement
-data/
+/data/
 
 # Checkpoints -- large binary files, don't belong in git history
 checkpoints/
@@ -22,3 +22,12 @@ wandb/
 .DS_Store
 Thumbs.db
 .vscode/
+/docs/compare_combined_before_review.py
+*.npz
+/results/gradcam/examples/
+/results_ordinal_readout/ordinal_seed101_val/predictions.csv
+/results_ordinal_readout/ordinal_seed202_val/predictions.csv
+/results_ordinal_readout/ordinal_seed303_val/predictions.csv
+video_ids.txt
+/results/test_eval/
+/results/test_eval_balanced/

@@ -64,8 +64,8 @@ PAIR_CONSTANTS = {
             "pred16": {"baseline": "e1fa74864db3832f", "ordinal": "0c7d9547958bfb8e"}},
     "202": {"ckpt16": {"baseline": "6f9687f3abf26800", "ordinal": "fe1ccd6606a28b2a"},
             "pred16": {"baseline": "b7f2568bc91ba62f", "ordinal": "f8d69aabba1b9dce"}},
-    "303": {"ckpt16": {"baseline": "PENDING-303", "ordinal": "PENDING-303"},
-            "pred16": {"baseline": "PENDING-303", "ordinal": "PENDING-303"}},
+    "303": {"ckpt16": {"baseline": "168e7d732c5dc83d", "ordinal": "5b5532282067a41b"},
+            "pred16": {"baseline": "69a912f31c7ff551", "ordinal": "f5df0a08d5d50cdf"}},
 }
 PAIR_ORDER = ["101", "202", "303"]  # fixed: seed pairs are reported in this order
 

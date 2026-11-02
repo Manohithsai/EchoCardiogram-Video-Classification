@@ -1,0 +1,65 @@
+{
+  "tag": "pair_202",
+  "scope": "VAL, one seed pair, descriptive only",
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 404,
+    "interval": "95% percentile",
+    "paired_indices": true
+  },
+  "counts": {
+    "videos": 1288,
+    "mild": 133,
+    "normal": 999
+  },
+  "metrics": {
+    "mild_recall": {
+      "population": 133,
+      "unit": "recall",
+      "difference_ordinal_minus_baseline": 0.16541353383458646,
+      "ci95": [
+        0.07518796992481203,
+        0.2631578947368421
+      ],
+      "baseline_recall": 0.19548872180451127,
+      "ordinal_recall": 0.3609022556390977
+    },
+    "normal_recall": {
+      "population": 999,
+      "unit": "recall",
+      "difference_ordinal_minus_baseline": -0.018018018018018018,
+      "ci95": [
+        -0.03003003003003003,
+        -0.006006006006006006
+      ],
+      "baseline_recall": 0.9629629629629629,
+      "ordinal_recall": 0.944944944944945
+    },
+    "mae": {
+      "population": 1288,
+      "unit": "mae_points",
+      "baseline_mae": 5.955026003884973,
+      "ordinal_mae": 5.334214488171643,
+      "difference_ordinal_minus_baseline": -0.6208115157133304,
+      "ci95": [
+        -0.8162180173100892,
+        -0.4355463246381061
+      ]
+    }
+  },
+  "inputs": {
+    "baseline": {
+      "dir": "results\\eval_split\\val_matched_baseline202_fp32_k1",
+      "checkpoint": "checkpoints\\r3d18_matched_baseline_seed202\\best.pt",
+      "checkpoint_sha256_16": "6f9687f3abf26800",
+      "predictions_sha256_16": "b7f2568bc91ba62f"
+    },
+    "ordinal": {
+      "dir": "results\\eval_split\\val_ordinal202_stripped_fp32_k1",
+      "checkpoint": "checkpoints\\r3d18_ordinal_seed202\\best_for_eval.pt",
+      "checkpoint_sha256_16": "fe1ccd6606a28b2a",
+      "predictions_sha256_16": "f8d69aabba1b9dce"
+    }
+  },
+  "note": "Labels (consistently positive / inconclusive / negative) and guardrails (Normal recall >= 92%, MAE within about 0.15) apply to means across all three seed pairs, not to this single pair."
+}

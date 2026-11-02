@@ -1,0 +1,72 @@
+{
+  "split": "VAL",
+  "n_videos": 1288,
+  "checkpoint": "checkpoints\\r3d18_ordinal_seed202\\best.pt",
+  "checkpoint_sha256": "95b9b6625fb3466f1f7a0bb288dd87655943dfee8e009d74772d4edcca74c467",
+  "readout": "ordinal head four-class (secondary); thresholds 40/50/70, >= at each",
+  "preprocessing": {
+    "normalization_mean": [
+      0.43216,
+      0.394666,
+      0.37645
+    ],
+    "normalization_std": [
+      0.22803,
+      0.22145,
+      0.216989
+    ],
+    "normalization_source": "R3D constants from evaluate_all.py (not saved in checkpoint)",
+    "sampling": "single centred clip per video, no temporal augmentation (same as the unchanged evaluator)",
+    "precision": "fp32",
+    "device": "cuda"
+  },
+  "overall_accuracy": 0.8159937888198758,
+  "per_group": {
+    "<40": {
+      "n": 156,
+      "recall": 0.6025641025641025,
+      "exploratory": false
+    },
+    "40-50": {
+      "n": 133,
+      "recall": 0.22556390977443608,
+      "exploratory": false
+    },
+    "50-70": {
+      "n": 963,
+      "recall": 0.9615784008307373,
+      "exploratory": false
+    },
+    ">=70": {
+      "n": 36,
+      "recall": 0.027777777777777776,
+      "exploratory": false
+    }
+  },
+  "confusion_true_rows_pred_cols": [
+    [
+      94,
+      27,
+      35,
+      0
+    ],
+    [
+      20,
+      30,
+      83,
+      0
+    ],
+    [
+      5,
+      30,
+      926,
+      2
+    ],
+    [
+      0,
+      0,
+      35,
+      1
+    ]
+  ]
+}

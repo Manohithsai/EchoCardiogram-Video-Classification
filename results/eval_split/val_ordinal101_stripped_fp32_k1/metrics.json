@@ -1,0 +1,169 @@
+{
+  "tag": "val_ordinal101_stripped_fp32_k1",
+  "split": "VAL",
+  "arch": "r3d18",
+  "checkpoint": "checkpoints\\r3d18_ordinal_seed101\\best_for_eval.pt",
+  "checkpoint_sha256_16": "84be1d7f10c81670",
+  "checkpoint_epoch": 26,
+  "checkpoint_val_mae_recorded": 5.490593244570382,
+  "checkpoint_arch_field_if_any": null,
+  "precision": "fp32",
+  "autocast_active": false,
+  "tf32_disabled": true,
+  "device": "cuda",
+  "num_workers": 0,
+  "batch_size": 4,
+  "clips_per_video": 1,
+  "sampling": "single centred clip: start = (total_frames - num_frames*frame_stride) // 2; videos with total_frames <= num_frames*frame_stride are loop-padded; no temporal augmentation",
+  "normalisation_mean": [
+    0.43216,
+    0.394666,
+    0.37645
+  ],
+  "normalisation_std": [
+    0.22803,
+    0.22145,
+    0.216989
+  ],
+  "normalisation_source": "R3D constants from evaluate_all.py (not saved in checkpoint)",
+  "checkpoint_vs_config_settings": [
+    {
+      "setting": "num_frames",
+      "checkpoint": 32,
+      "evaluation_config": 32,
+      "where": "checkpoint['config']['data']",
+      "status": "match"
+    },
+    {
+      "setting": "frame_stride",
+      "checkpoint": 2,
+      "evaluation_config": 2,
+      "where": "checkpoint['config']['data']",
+      "status": "match"
+    },
+    {
+      "setting": "ef_thresholds",
+      "checkpoint": [
+        40,
+        50
+      ],
+      "evaluation_config": [
+        40,
+        50
+      ],
+      "where": "checkpoint['config']['data']",
+      "status": "match"
+    }
+  ],
+  "effective_data_config": {
+    "cache_dir": "data/cache",
+    "file_list_csv": "data/EchoNet-Dynamic/FileList.csv",
+    "num_frames": 32,
+    "frame_stride": 2,
+    "ef_thresholds": [
+      40,
+      50
+    ]
+  },
+  "eval_config_file": "configs/base.yaml",
+  "eval_config_sha256_16": "a749966bab2a605b",
+  "file_list_csv_sha256_16": "31942534b7bb3deb",
+  "ids_match_csv_order": true,
+  "ids_unique": true,
+  "provenance_gaps": [
+    "R3D normalisation is not stored in the checkpoint; the Kinetics constants from evaluate_all.py were used and are unverified against training",
+    "training config, seed, dataset/CSV version and code version at training time are not verifiable from the checkpoint alone"
+  ],
+  "torch_version": "2.11.0+cu128",
+  "python_version": "3.10.0",
+  "note": "Single centred clip per video. Multi-clip inference is not part of this version.",
+  "predictions_file": "results\\eval_split\\val_ordinal101_stripped_fp32_k1\\predictions.npz",
+  "predictions_sha256_16": "0c7d9547958bfb8e",
+  "video_ids_sha256_16": "7e8780c8cd39935a",
+  "n": 1288,
+  "mae": 5.489141173244263,
+  "mae_ci95": [
+    5.223015451949576,
+    5.75656396468974
+  ],
+  "rmse": 7.3399351883559145,
+  "rmse_ci95": [
+    6.954908875153519,
+    7.7222078657499695
+  ],
+  "r2_coefficient_of_determination": 0.64419069831801,
+  "pearson_r": 0.8057251749499086,
+  "pearson_r_squared": 0.6491930575480608,
+  "target_variance_sst_over_n": 151.4143905586163,
+  "ef_lt_50": {
+    "auc": 0.9086803066041821,
+    "sensitivity": 0.6747404844290658,
+    "specificity": 0.92992992992993,
+    "true_positives": 195,
+    "false_positives": 70,
+    "n_positive": 289
+  },
+  "ef_lt_40": {
+    "auc": 0.9445728005798677,
+    "sensitivity": 0.6346153846153846,
+    "specificity": 0.9752650176678446,
+    "true_positives": 99,
+    "false_positives": 28,
+    "n_positive": 156
+  },
+  "macro_f1": 0.6452940008319251,
+  "macro_f1_groups_used": 3,
+  "confusion_matrix_rows_true_cols_pred": [
+    [
+      99,
+      31,
+      26
+    ],
+    [
+      22,
+      43,
+      68
+    ],
+    [
+      6,
+      64,
+      929
+    ]
+  ],
+  "groups": {
+    "Reduced": {
+      "n_true": 156,
+      "n_predicted": 127,
+      "recall": 0.6346153846153846,
+      "precision": 0.7795275590551181,
+      "f1": 0.6996466431095406,
+      "mae": 9.272754284051748,
+      "mean_signed_error": 7.518820622028449
+    },
+    "Mildly reduced": {
+      "n_true": 133,
+      "n_predicted": 138,
+      "recall": 0.3233082706766917,
+      "precision": 0.3115942028985507,
+      "f1": 0.3173431734317343,
+      "mae": 7.522433417184012,
+      "mean_signed_error": 3.645961890543314
+    },
+    "Normal": {
+      "n_true": 999,
+      "n_predicted": 1023,
+      "recall": 0.92992992992993,
+      "precision": 0.9081133919843597,
+      "f1": 0.9188921859545005,
+      "mae": 4.627608126467532,
+      "mean_signed_error": -2.7809836012465103
+    }
+  },
+  "bland_altman": {
+    "bias": -0.8698398052535442,
+    "loa_low": -15.160283010376066,
+    "loa_high": 13.420603399868977
+  },
+  "edv_mae": 19.16376495361328,
+  "esv_mae": 10.836010932922363
+}
