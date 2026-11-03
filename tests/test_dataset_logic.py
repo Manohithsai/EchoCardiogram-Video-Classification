@@ -52,3 +52,21 @@ class TestClipSampling:
         assert idx.min() >= 0
         assert idx.max() < total_frames
         assert len(idx) == num_frames
+import pytest
+from src.data.echonet_dataset import EchoNetDataset
+from src.infer.predict_video import centred_clip_indices, NUM_FRAMES, FRAME_STRIDE
+
+
+class TestRealClipSamplingMatchesPredictor:
+    @pytest.mark.parametrize("n", [1, 37, 40, 64, 65, 174, 690])
+    def test_predictor_uses_dataset_rule(self, n):
+        ds = object.__new__(EchoNetDataset)
+        ds.num_frames = NUM_FRAMES
+        ds.frame_stride = FRAME_STRIDE
+        ds.is_train = False
+        expected = ds._sample_clip_indices(n)
+        got = centred_clip_indices(n)
+        assert len(got) == NUM_FRAMES
+        assert got.min() >= 0 and got.max() < n
+        assert (got == expected).all()
+        
