@@ -13,7 +13,7 @@ This file covers setup and run, the application, verified results, run history, 
 
 ## Run it yourself (local demo website)
 
-**Packaging status, 8 November 2026:** the current application has been run and accepted on the project's Windows laptop. The public repository still contains an older version of the project. The steps below describe the accepted local application; a fresh clone alone is not yet a complete, tested demo package. Repository cleanup and release packaging remain separate work.
+**Packaging status, 8 November 2026:** this source update includes the accepted local application and reviewed research code, plus six aggregate graphs. The application has been run and accepted on the project's existing Windows laptop. A fresh clone is **not a self-contained demo**: trained checkpoints, dataset videos, per-video prediction archives and local runtime metrics/calibration files are not distributed. A clean-machine installation and macOS end-to-end run remain unverified. See the [graph guide](docs/graph-guide.md) for the included figures and their limits.
 
 Unlike an upload-any-video demo, this version selects **local EchoNet-Dynamic TEST samples only**. You need an authorized local dataset copy and the original compatible model files. There is no arbitrary video upload in the accepted interface.
 
@@ -46,7 +46,7 @@ git clone https://github.com/Manohithsai/EchoCardiogram-Video-Classification.git
 cd EchoCardiogram-Video-Classification
 ```
 
-**Do not mistake this for a finished installer:** at the time of this review, the public copy does not contain the accepted laptop app and all its current supporting files. Use the complete local project for the instructions below. Do not overwrite the working local folder with the older public copy.
+**This is source code, not a finished installer.** The accepted `app/app.py` and reviewed source are included, but the trained models, authorized local TEST videos and matching runtime artifacts must be supplied separately. Keep the complete working local project and its original files; a fresh clone cannot replace them.
 
 ### Model download
 
@@ -58,7 +58,7 @@ The public repository, a ZIP of its source code and this README do not include t
 
 **Not yet tested end-to-end on a Mac.** These are the corresponding Terminal commands for a complete local project, not a claim of verified macOS support. No Apple Silicon speed, memory or MPS acceleration result is available. The current app uses the CPU fallback when CUDA is unavailable; it does not select Apple's MPS backend.
 
-1. Obtain the complete current project folder and the required local artifacts. Download EchoNet-Dynamic through its official access process, accepting its terms yourself. Do not use the older public clone as if it already includes the accepted app.
+1. Obtain the current source and the required original local artifacts. Download EchoNet-Dynamic through its official access process, accepting its terms yourself. The public source includes the app, but not its weights, videos or full runtime artifact set.
 2. Open Terminal in the project root, the folder containing `src`, `configs` and `app`. Check that `python3 --version` points to the Python environment you intend to use. A specific Mac Python/PyTorch/torchvision version combination has not been verified for this app.
 3. If creating a new environment, use:
 
@@ -174,7 +174,7 @@ Research keeps the residual-error model separate. It uses its **own** mean check
 
 ## Repository structure
 
-The core source folders below are established project components. The `app/` entry and newer local experiment artifacts belong to the accepted local project; their presence in a future public release must be checked after cleanup. This is not a claim that every item already exists in the public branch.
+The source update includes the accepted `app/` entry and reviewed training, evaluation, inference and explanation code. Result directories contain only the six reviewed aggregate graphs listed in the [graph guide](docs/graph-guide.md). Other result artifacts and all model/data files remain local; the tree below is a source overview, not a complete runtime package.
 
 ```text
 project-root/
@@ -191,7 +191,7 @@ project-root/
 ├── configs/
 │   └── base.yaml                # local data paths and experiment settings
 ├── tests/                       # tests; other test_*.py files also exist
-├── docs/                        # experiment registration and launch records
+├── docs/                        # experiment registration, launch records and graph guide
 ├── analysis_archive_2026-10-29/  # older exploratory analyses
 ├── requirements.txt             # broad project dependencies, not a final lockfile
 └── README.md
@@ -295,7 +295,7 @@ Historical residual TEST aggregates report `90.68%` coverage and uncertainty/err
 
 ## Run history and transparency
 
-The results above were assembled from saved metrics, experiment-completion artifacts, integrity checks and original run outputs. This README does not claim that all newer local artifacts are already committed to the public repository, or that a fresh run will reproduce an old checkpoint without its original environment.
+The results above were assembled from saved metrics, experiment-completion artifacts, integrity checks and original run outputs. The reviewed source and six aggregate graphs are included in this update; the local result artifacts named below are not bundled. Their paths document the evidence behind the tables, not downloadable files. A fresh run is not claimed to reproduce an old checkpoint without its original environment.
 
 ### What was actually run (reviewed state, 8 November 2026)
 
@@ -325,12 +325,12 @@ These paths identify evidence and local runtime dependencies. They are not downl
 5. **There are two TEST group-report versions.** Both remain labelled, with their own counts. The larger F1 is not silently substituted.
 6. **Some experiments failed or were negative.** Earlier AMP failures are not comparable completed FP32 augmentation arms. MC Dropout did not provide useful error ranking in the historical check; heteroscedastic sigma was constant. Ordinal results were inconclusive and matched explanation alignment did not establish an advantage.
 7. **Calibration is checkpoint-specific, not universal.** The original None four-class calibration cannot be assigned to an augmentation winner or a regression-only Swin model. Optional winner calibration remains paused.
-8. **Deployment scope is local.** The accepted app is not a public service, external API, ONNX export or Docker release. Report and presentation drafts exist, but final repository packaging remains pending. A poster is not part of the current deliverables.
+8. **Deployment scope is local.** The accepted app is not a public service, external API, ONNX export or Docker release. This update adds reviewed source and aggregate graphs, not a self-contained model/data release. Report and presentation drafts exist. A poster is not part of the current deliverables.
 9. **EfficientNet-B3 + LSTM is deferred.** A frame CNN with mean pooling is not that architecture. No B3+LSTM result is claimed.
 
 ### Raw data and figures
 
-Per-video records, prediction arrays, dataset IDs, cached clips and dataset-derived example images remain local and must not be bundled with a new code release. Aggregate tables and safe figures can be prepared from the verified evidence after review. This file does not link to private archives or claim a public figures package exists.
+Six reviewed aggregate figures are included: two dataset-distribution plots, one original None four-class reliability plot and three historical uncertainty deferral curves. The [graph guide](docs/graph-guide.md) links each image and explains its source and limits, including the negative uncertainty findings. No per-video scatter plots, Bland-Altman plots or ultrasound-frame overlays are included in the current result tree. Per-video records, prediction arrays, dataset IDs, cached clips and dataset-derived example frames remain local. Old Git history is a separate issue, as noted below.
 
 ## Data and models
 
@@ -366,7 +366,7 @@ Keep the exact matching sets. A missing optional artifact must not be replaced w
 
 ### Repository history and licensing
 
-The existing public README records that older commits, before `40c957c`, contain per-video prediction files and three Grad-CAM example images derived from the dataset. **Do not treat the Git history as free of dataset-derived material.** Adding ignore rules or deleting files in a later commit does not remove earlier history. Release cleanup must address this before calling the repository distribution-ready.
+An earlier repository audit recorded that commits before `40c957c` contain per-video prediction files and three Grad-CAM example images derived from the dataset. This update also removes old result-output files from the current tracked tree, except the six reviewed aggregate graphs. Their historical commits remain accessible. **Do not treat the Git history as free of dataset-derived material.** Adding ignore rules or deleting files in a later commit does not remove earlier history. This update does not rewrite history or certify historical redistribution rights. A separate history audit and cleanup decision is needed before calling the full repository history distribution-ready.
 
 No project license has been chosen in the reviewed public repository. This README does not grant a new code, model or dataset license. Dataset access and use remain subject to their own terms.
 

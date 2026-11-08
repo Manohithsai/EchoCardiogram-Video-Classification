@@ -1,0 +1,75 @@
+{
+  "kind": "echo_ef_group_correctness_estimate",
+  "version": 2,
+  "fitted_on": "2026-11-05",
+  "label": "EXPERIMENTAL: fitted and evaluated on reused development validation data; not validated on new scans; estimates the chance the predicted EF group is correct, not the exact EF; no clinical or referral cutoff.",
+  "model": {
+    "type": "logistic_regression",
+    "feature": "min(abs(ef-40), abs(ef-50)) plus predicted-group indicators (Mildly reduced, Normal; Reduced is the reference)",
+    "boundaries_ef": [
+      40.0,
+      50.0
+    ],
+    "group_order": [
+      "Reduced",
+      "Mildly reduced",
+      "Normal"
+    ],
+    "coefficients": {
+      "intercept": -1.1866929408906695,
+      "distance": 0.2512327934720209,
+      "group_mildly_reduced": -0.14558656680493057,
+      "group_normal": 1.5242812370182586
+    },
+    "penalty_l2": 1.0,
+    "inference": {
+      "formula": "p = sigmoid(intercept + distance*d + group_mildly_reduced*I(predicted group is Mildly reduced) + group_normal*I(predicted group is Normal)); Reduced is the reference group",
+      "distance_definition": "d = min(abs(ef-40), abs(ef-50))",
+      "distance_units": "EF points",
+      "feature_scaling": "none (raw EF points; no normalization applied to features)",
+      "z_clip": 35.0
+    }
+  },
+  "fit_domain": {
+    "fit_rows": 645,
+    "eval_rows": 643,
+    "per_predicted_group": {
+      "Reduced (<40)": {
+        "fit_count": 78,
+        "distance_min": 0.16298675537109375,
+        "distance_max": 22.289987564086914
+      },
+      "Mildly reduced (40-<50)": {
+        "fit_count": 57,
+        "distance_min": 0.11695480346679688,
+        "distance_max": 4.909187316894531
+      },
+      "Normal (>=50)": {
+        "fit_count": 510,
+        "distance_min": 0.07199478149414062,
+        "distance_max": 23.483657836914062
+      }
+    }
+  },
+  "eval_log_loss_development_only": 0.3145235366250067,
+  "identities": {
+    "checkpoint_sha256": "7ea9c83359e3918019a99057bc7154ce1d66437ac4bc28f55bb25f7307dc194a",
+    "predictions_npz_sha256": "e5152b2aad178f5d8bc02571fc1f3e0eecff0168e206bb9f425015ef31cf4e4b",
+    "metrics_json_sha256": "66638a8397f67895040dfb99a016832eb951e735aec06305f1df34463a99f8f9",
+    "protocol_json_sha256": "be797fcd4b0d33ff8b1375c66a43977a4dd61046a2723dd46466c17ae4b43e4d",
+    "protocol_version": "fourclass-fp32-staged-v3",
+    "file_list_csv_sha256": "31942534b7bb3debb9f0f3de42af2fb4342f7ea918b32a4095a0b66e91fbace1",
+    "analysis_script_sha256": "23e3b435772b043141ba3b0323cf39278d473778b7144fdca407b18e17c53fc1"
+  },
+  "preprocessing": {
+    "clips_per_video": 1,
+    "clip_selection": "single centered clip",
+    "num_frames": 32,
+    "frame_stride": 2,
+    "frame_size": 112,
+    "precision": "fp32",
+    "tf32_disabled": true,
+    "normalization": "mean/std saved inside the checkpoint; verified by the app at load",
+    "source": "results/eval_split/val_r3d18_baseline_fp32_k1/metrics.json and the protocol config"
+  }
+}
